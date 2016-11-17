@@ -1,8 +1,20 @@
-let http = require('http');
-let express = require('express');
+let submit = document.getElementsByClassName('.btn');
+let newTask = document.querySelector('#newTask');
+let listElement = document.querySelector('.theList')
+let list = new Array();
 
-let port = 8000;
+function updateList(){
+  var newItem = document.createElement('li');
+  var ItemValue = newTask.value;
+  var t = document.createTextNode(ItemValue);
+  newItem.appendChild(t);
+  listElement.appendChild(newItem);
 
-let app = express();
-let server = http.createServer(app);
-server.listen(port);
+
+}
+
+function addTask(){
+  list.push(newTask.value);
+  console.log(list);
+  updateList();
+}
