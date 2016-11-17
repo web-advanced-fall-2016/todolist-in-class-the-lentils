@@ -1,5 +1,9 @@
 # Session 11 / in class exercise
 
+## Team Info
+- Eliza
+- David
+
 ### Setup
 
 We are going to split into groups of two. Each team should collaborate to reach our goal. It's gonna be like the idea of [pair programming](https://en.wikipedia.org/wiki/Pair_programming). Engagement of both the students in coding is important. How to split the work is totally up to the teams (i.e. one person for front-end and the other for back-end). 
