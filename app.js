@@ -15,18 +15,42 @@ app.use(express.static(path.join(__dirname, 'public')));
     YOUR CODE
 ====================*/
 
-var dataSet= [{
-        "description": "Finish this homework",
-        "id": 0
-    },
-    {
-        "description": "Celebrate Thankgiving",
-        "id": 1
-    },
-    {
-        "description": "Go Work on thesis Documentation",
-        "id": 2
-    }
+let todolist = require('./todolist');
+var db = require('./db.js');
+var fs = require('fs');
+
+
+// app.get('/tasks', function(req, res, next){
+//   res.json(db.getList());
+//   let tasks = db.getList();
+//   next();
+// });
+
+// app.get('/tasks/:task_id', function(req, res, next){
+//   let id=req.params.task_id;
+//   let task = db.getTask(id);
+//   if(task)
+//     res.json(task);
+// });
+
+// app.post('/tasks', function(req, res, next){
+//   db.getList(req.body);
+//   console.log(req.body);
+//   todolist.push(req.body);
+// });
+
+var dataSet= [
+//         "description": "Finish this homework",
+//         "id": 0
+//     },
+//     {
+//         "description": "Celebrate Thankgiving",
+//         "id": 1
+//     },
+//     {
+//         "description": "Go Work on thesis Documentation",
+//         "id": 2
+//     }
 ];
 
 // Comunication between Jason File and Index
@@ -42,16 +66,49 @@ app.use(function(req, res, next) {
     next(); // Go on to the next item
 });
 
+app.use('/test', function(req, res){
+  res.json({message:"success"});
+});
+
 //get from the server
 app.get('/start',function(req,res){
+  let dataSet = db.getTaskList;
   res.json(dataSet);
+  console.log(dataSet);
+  db.tasks = dataSet;
 });
 
 //Endpoint for Adding an Item to server, Takes in object newTask data
 //name/id from client and returns an updated initial Data array
-app.post('/addItem', function(req, res,next){
+app.post('/addTask', function(req, res){
    console.log(req.body);
-   dataSet.push(req.body);
-   console.log(dataSet);
-   res.json(dataSet);
+   db.tasks.push(req.body);
+   console.log(db.tasks);
+   res.json(db.tasks);
+   console.log("db is" + db.tasks);
 });
+
+app.post('/removeTask', function(req, res){
+  removeTask(req.body.id);
+  console.log("removing" + req.body.id);
+  let index = db.tasks.indexOf(req.body.id);
+  for (task of db.tasks){
+    console.log("The index of the task is: " + db.tasks.indexOf(task));
+  }
+  console.log(db.tasks);
+  res.json(db.tasks);
+  db.updateList(db.tasks);
+});
+
+function removeTask(id){
+  for (task of db.tasks){
+    console.log (task.id);
+    console.log (id);
+    if (item.id == parseInt(id)){
+      let index = db.tasks.indexOf(task);
+      db.tasks.splice(index, 1);
+    }
+  }
+}
+
+app.listen(port);
