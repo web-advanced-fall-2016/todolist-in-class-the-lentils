@@ -4,39 +4,65 @@
 - Eliza
 - David
 
-### Setup
+### Endpoints
 
-We are going to split into groups of two. Each team should collaborate to reach our goal. It's gonna be like the idea of [pair programming](https://en.wikipedia.org/wiki/Pair_programming). Engagement of both the students in coding is important. How to split the work is totally up to the teams (i.e. one person for front-end and the other for back-end). 
+| URL                   | Description                              | Response structure                       |
+| --------------------- | ---------------------------------------- | ---------------------------------------- |
+| `/items`              | returns back a list of all the available items. | `{message: 'success', data: { list: [{id: 1, description: 'Clean the house'},{},…]} }` |
+| `/addItem`            | adds a new item to our todo list         | `{message: 'success', data: {item: newItem}}` |
+| `/removeTask/:taskId` | removes the task with id=`taskId`        | `{message: 'success', data: {}}`         |
+|                       |                                          |                                          |
 
-Start from planning. Before you jump into coding, take 5-10 minutes to define your approach and steps within your team. Maybe draw a simple sketch of your design. While one person is coding, the other team member is responsible to provoke ideas, make sure of code validity, recommend better ways of implementation or **most importantly ask questions if he/she doesn't understand something**.
+Response
 
-I will be roaming around between teams. You can ask me questions or Google them :). You **should** push your project to this repository before you leave the class.
+```json
+{
+  message: 'success', 
+ data: [{
+   id: 1, 
+   description: 'Clean the house'
+ },
+ {}
+       ]
+}
+```
 
-The base scaffold provided is nothing but the structure. Make your project as nice/functional as you can. But, **don't over complicate it**. Start with the minimal feasible goal and improve if you had time.
+### Features
 
-This is an opportunity to teach and learn together. Let's make it fun and productive.
+ 	1. Mainatin an array of Tasks via. a to-do-list function
+ 	2. Add new item through an HTML input at the top and plus (“+”) sign next to it. This sends the content to a sever and after confirmation creates a new HTML element of that task and a delete button ("x")
+ 	3. Remove existing items on list with the delete button (“x”). Calling to the server it searches through the current array dataSet for an object with that ID. When that object is found the function splices the task from the server and the HTML task list.
+ 	4. List is saved so existing items can be revisited, even if the user leaves or refreshes site.
 
-Assignment link [https://classroom.github.com/group-assignment-invitations/acc7a44eff55799f00ac98333add33e6](https://classroom.github.com/group-assignment-invitations/acc7a44eff55799f00ac98333add33e6)
+### To Run the Code
 
-### Goal
+1. Clone or Download repo to your computer
 
-Your goal is to build a very simple Todo list application. Here are some examples:
+2. Open the primary directory through your terminal
 
-[https://github.com/component/todo](https://github.com/component/todo)
+3. Install dependencies 
 
-[http://dreamerslab.com/blog/en/write-a-todo-list-with-express-and-mongodb/](http://dreamerslab.com/blog/en/write-a-todo-list-with-express-and-mongodb/)
+   ```
+   npm install
+   ```
 
-Provided within this repository is a basic scaffold that includes an `express` application that runs a serve on `localhost:3000`. Run the server with: `npm start`. Build your application on tip of this scaffold.
+4. Run program
 
-You are allowed to use third party libraries/tools like JQuery/Bootstrap.
+   ```
+   node app.js
+   ```
 
-#### Required features
+5. Within a web broswer and type [http://localhost:3000](http://localhost:3000)
 
-- Add new item.
-- Remove existing items.
-- Viewer should be able to see all the existing items.
-- Each Item should at least have a description.
-- List should be persistent upon reloading the page. In other words, it should be persistent as long as the server instance is running.
+### Libraries Used and Refrences
+
+
+
+
+
+
+
+
 
 #### Bonus features
 
