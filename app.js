@@ -26,7 +26,7 @@ server.listen(port, () => {
 
 app.use(function(req, res, next) {
     // Do Logging on every request
-    // console.log('Something is happening.');
+    console.log('Something is happening.');
     next(); // Go on to the next item
 });
 
@@ -34,20 +34,16 @@ app.use(function(req, res, next) {
 app.get('/items',function(req,res){
   if( dataSet.length) {
     res.json({message: 'success', data: {dataSet}});
-
-    for(item of items){
-
-    }
-
-
   }
   else {
      res.json({message: 'No task available!', data: {dataSet}});
   }
-
-
-
 });
+
+app.post('/items', function(req, res, next){
+  
+});
+
 
 //Endpoint for Adding an Item to server, Takes in object newTask data
 //name/id from client and returns an updated initial Data array
