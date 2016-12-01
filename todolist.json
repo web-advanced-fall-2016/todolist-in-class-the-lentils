@@ -1,13 +1,13 @@
 [{
-        "description": "item-1",
+        "description": "Finish this homework",
         "id": 0
     },
     {
-        "description": "item-2",
+        "description": "Celebrate Thankgiving",
         "id": 1
     },
     {
-        "description": "item-3",
+        "description": "Go Work on thesis Documentation",
         "id": 2
     }
 ]
